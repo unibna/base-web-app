@@ -16,14 +16,14 @@ templates = Jinja2Templates(directory="/Users/ryan/playground/python/projects/te
 )
 async def get_recommender(
     request: Request,
-    searching: Annotated[str, Form()] = None,
+    search: Annotated[str, Form()] = None,
 ):  
     context = {"request": request}
 
-    print("Searching:", searching)
+    print("Searching:", search)
     # dummy
-    if searching:
-        results = [f"{searching} - result {i}" for i in range(5)]
+    if search:
+        results = [f"{search} - result {i}" for i in range(5)]
         context["results"] = results
 
     return templates.TemplateResponse(

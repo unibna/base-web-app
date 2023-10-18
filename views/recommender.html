@@ -14,21 +14,47 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <div class="container">
-        <form>
-            <div class="form-group">
-                <h3>Search Engine</h3>
-                <input type="input" name="searching" class="form-control">
-                <button type="submit" class="btn btn-primary">Search</button>
+        <div class="container text-center">
+            <h1>Hello world!</h1>
+        </div>
+
+        <br/>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <form class="card card-sm" action="" method="get">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-search h4 text-body"></i>
+                        </div>
+                        <!--end of col-->
+                        <div class="col">
+                            <input class="form-control form-control-lg form-control-borderless" name="search" type="search" placeholder="Search topics or keywords">
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <button class="btn btn-lg btn-success" type="submit">Search</button>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+
+        <br>
 
         {% if results %}
-        <ul class="list-group">  
-            {% for result in results %}
-            <li class="list-group-item">{{ result }}</li>
-            {% endfor %}
-        </ul>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <ul class="list-group">  
+                    {% for result in results %}
+                    <li class="list-group-item">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         {% endif %}
     </div>
 </body>
