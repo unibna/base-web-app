@@ -1,6 +1,7 @@
 import datetime
+from typing_extensions import Annotated
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -15,17 +16,17 @@ templates = Jinja2Templates(directory="/Users/ryan/playground/python/projects/te
 )
 async def get_recommender(
     request: Request,
-):
+    searching: Annotated[str, Form()] = None,
+):  
+    context = {"request": request}
+
+    print("Searching:", searching)
+    # dummy
+    if searching:
+        results = [f"{searching} - result {i}" for i in range(5)]
+        context["results"] = results
+
     return templates.TemplateResponse(
             name="recommender.html", 
-            context={
-                "request": request,
-                "id_": 123
-                },
+            context=context,
         )
-    # value = f"Message generated at {datetime.datetime.now()}"
-    # return {
-    #     "data": {
-    #         "message": value
-    #     }
-    # }
